@@ -3,6 +3,10 @@ const transporter = require('./mailtransporter');
 const app = express();
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.send('API service is live');
+});
+
 app.post('/send-mail', async (req, res) => {
    try{
     await transporter.sendMail({
