@@ -1,5 +1,7 @@
 const express = require('express');
+
 const transporter = require('./mailtransporter');
+require('dotenv').config()
 const app = express();
 app.use(express.json());
 
