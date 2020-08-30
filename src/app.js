@@ -26,7 +26,7 @@ app.post('/send-mail', async (req, res) => {
                 Name: ${req.body.name}<br>
                 Email: ${req.body.email}<br>
                 Subject: ${req.body.subject}<br>
-                Message: ${req.body.message}`
+                Message: ${req.body.comment}`
     });
 
     res.send();
