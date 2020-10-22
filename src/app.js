@@ -13,22 +13,28 @@ app.get('/', (req, res) => {
 
 app.post('/send-mail', async (req, res) => {
    try{
-    await transporter.sendMail({
+       
+       await transporter.sendMail({
         from: '"Helpdesk" <admin@enebula.in>',
         to: `${req.body.name}, ${req.body.email}`,
         subject: "Message Received", 
         html: `Hi, ${req.body.name}<br> We have recieved your message and one of us will soon get in touch with you.<br>Team, eNebula`
     }); 
+    
+    const adminMailList = ['anirudh.sah96@gmail.com', 'enebula@gmail.com', 'admin@enebula.in'];
+    adminMailList.forEach(async emailAddress => {
 
-    await transporter.sendMail({
-        from: '"Helpdesk" <admin@enebula.in>',
-        to: `Admin, admin@enebula.in`,
-        subject: "New Message from enebula site", 
-        html: `A user has just posted a message for you<br>
-                Name: ${req.body.name}<br>
-                Email: ${req.body.email}<br>
-                Subject: ${req.body.subject}<br>
-                Message: ${req.body.comment}`
+        await transporter.sendMail({
+            from: '"Helpdesk" <admin@enebula.in>',
+            to: `Admin, ${emailAddress}`,
+            subject: "New Message from enebula site", 
+            html: `A user has just posted a message for you<br>
+                    Name: ${req.body.name}<br>
+                    Email: ${req.body.email}<br>
+                    Subject: ${req.body.subject}<br>
+                    Message: ${req.body.comment}`
+        });
+
     });
 
     res.send();
