@@ -21,7 +21,7 @@ app.post('/send-mail', async (req, res) => {
         html: `Hi, ${req.body.name}<br> We have recieved your message and one of us will soon get in touch with you.<br>Team, eNebula`
     }); 
     
-    const adminMailList = ['anirudh.sah96@gmail.com', 'enebula@gmail.com', 'admin@enebula.in'];
+    const adminMailList = ['anirudh.sah96@gmail.com', 'enebulait@gmail.com', 'admin@enebula.in'];
     adminMailList.forEach(async emailAddress => {
 
         await transporter.sendMail({
